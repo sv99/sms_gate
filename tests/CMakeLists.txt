@@ -1,6 +1,12 @@
-include_directories(${SRC_DIR})
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-set(TEST_FILES
-        main.c)
+set(sms_gate_TEST_FILES
+        basic_check.cpp
+        command_line_check.cpp)
 
-add_executable(test-sms-gate ${TEST_FILES})
+add_executable(sms_gate_tests ${sms_gate_TEST_FILES})
+
+# link unit test executable against google test
+target_link_libraries(sms_gate_tests gtest gtest_main)
+target_link_libraries(sms_gate_tests sms_gate_lib ${Boost_LIBRARIES})
+

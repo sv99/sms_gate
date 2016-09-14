@@ -1,8 +1,10 @@
 #include <signal.h>
 #include <iostream>
-#include <sstream>
+#include <ostream>
 
+#include "config.h"
 #include "GateController.hpp"
+#include "command_line.h"
 
 GateController controller;
 
@@ -15,9 +17,13 @@ void my_handler (int s)
   exit (0);
 }
 
-int main ()
+int main (int argc, const char *argv[])
 {
   std::cout << "Start SMS Gate" << std::endl;
+
+  opt::variables_map vm;
+  if (!parse_command_line (vm, argc, argv))
+    return 1;
 
   signal (SIGINT, my_handler);
 
