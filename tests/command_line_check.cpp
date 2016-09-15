@@ -7,9 +7,10 @@
 opt::variables_map get_vars (int argc, const char *argv[])
 {
   opt::variables_map vm;
-  const opt::options_description& desc = get_description();
-  opt::store (opt::parse_command_line (argc, argv, desc), vm);
-  opt::notify (vm);
+  //const opt::options_description& desc = get_description();
+  //opt::store (opt::parse_command_line (argc, argv, desc), vm);
+  //opt::notify (vm);
+  parse_command_line (vm, argc, argv);
   return vm;
 }
 

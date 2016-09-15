@@ -31,9 +31,13 @@ find_package(Boost 1.60 REQUIRED COMPONENTS
         log program_options)
 
 include_directories(${Boost_INCLUDE_DIRS})
-include_directories(src)
+
+add_subdirectory(external/fmt)
+include_directories(external/fmt)
 
 add_subdirectory(src)
+include_directories(src)
+
 add_subdirectory(external/googletest)
 add_subdirectory(tests)
 

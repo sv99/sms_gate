@@ -10,6 +10,6 @@
 namespace opt = boost::program_options;
 
 opt::options_description get_description();
-bool parse_command_line (opt::variables_map &vm, int argc, const char *argv[]);
+void parse_command_line (opt::variables_map &vm, int argc, const char *argv[]);
 
 #endif //SMS_GATE_COMMAND_LINE_H

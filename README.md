@@ -40,6 +40,13 @@ UML
 Дополнительные библиотеки
 -------------------------
 
+1. Test framework [google test](https://github.com/google/googletest)
+
+2. Command line parser [boost::program_options](http://www.boost.org/doc/libs/1_61_0/doc/html/program_options.html)
+
+3. Small, safe and fast formatting library [fmt](http://fmtlib.net/latest/index.html)
+
+4. Logger [boost::log](http://www.boost.org/doc/libs/1_61_0/libs/log/doc/html/index.html)
+
 [JSON for Modern C++](https://github.com/nlohmann/json)
-[google test](https://github.com/google/googletest)
 

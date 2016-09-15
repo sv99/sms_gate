@@ -19,11 +19,34 @@ void my_handler (int s)
 
 int main (int argc, const char *argv[])
 {
-  std::cout << "Start SMS Gate" << std::endl;
-
+  // parse command line params
   opt::variables_map vm;
-  if (!parse_command_line (vm, argc, argv))
-    return 1;
+  try
+    {
+      parse_command_line (vm, argc, argv);
+    }
+  catch(opt::error_with_option_name& e)
+    {
+      std::cout << e.what() << std::endl;
+      vm.insert(std::make_pair("help", opt::variable_value()));
+    }
+
+  if (vm.count ("help"))
+    {
+      std::cout << "Usage: sms_gate [options]" << std::endl;
+      std::cout << get_description () << std::endl;
+      return 1;
+    }
+
+  if (vm.count ("version"))
+    {
+      std::cout << get_version() << std::endl;
+      return 1;
+    }
+
+  // init logging
+
+  std::cout << "Start SMS Gate" << std::endl;
 
   signal (SIGINT, my_handler);
 

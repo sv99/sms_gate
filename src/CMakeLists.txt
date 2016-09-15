@@ -13,4 +13,4 @@ set(sms_gate_SOURCE_FILES
 add_library(sms_gate_lib ${sms_gate_SOURCE_FILES})
 
 add_executable(sms_gate main.cpp)
-target_link_libraries(sms_gate sms_gate_lib ${Boost_LIBRARIES})
+target_link_libraries(sms_gate sms_gate_lib ${Boost_LIBRARIES} fmt)

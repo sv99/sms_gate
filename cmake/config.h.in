@@ -1,5 +1,18 @@
+#ifndef CMAKE_CONFIG_H_IN
+#define CMAKE_CONFIG_H_IN
+
+#include "fmt/format.h"
+#include <string>
+
 #define VERSION_MAJOR @VERSION_MAJOR@
 #define VERSION_MINOR @VERSION_MINOR@
 #define VERSION_PATCH @VERSION_PATCH@
 
 const char *GIT_REVISION = "@GIT_REVISION@";
+
+inline std::string get_version()
+{
+  return fmt::format("sms_gate version {}.{}.{}", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
+}
+
+#endif //CMAKE_CONFIG_H_IN
