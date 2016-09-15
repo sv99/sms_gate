@@ -5,6 +5,8 @@
 #ifndef SMS_GATE_LOGGER2_H
 #define SMS_GATE_LOGGER2_H
 
+#define SPDLOG_FMT_EXTERNAL
+
 #include <iostream>
 #include "spdlog/spdlog.h"
 
