@@ -10,7 +10,7 @@ set(sms_gate_SOURCE_FILES
         InputWorker.cpp InputWorker.hpp
         OutputWorker.cpp OutputWorker.hpp
         command_line.cpp command_line.h
-        logger.cpp logger.h)
+        logger2.h)
 
 add_library(sms_gate_lib ${sms_gate_SOURCE_FILES})
 

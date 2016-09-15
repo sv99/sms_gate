@@ -4,7 +4,7 @@
 
 #include "config.h"
 #include "command_line.h"
-#include "logger.h"
+#include "logger2.h"
 #include "GateController.hpp"
 
 GateController controller;
@@ -46,8 +46,14 @@ int main (int argc, const char *argv[])
     }
 
   // init logging
+  init_logger ("smsgate", spdlog::level::debug);
 
-  INFO << "Start SMS Gate" << std::endl;
+  //  INFO << "Start SMS Gate" << std::endl;
+  auto l = spdlog::get("smsgate");
+  l->info ("info message");
+  l->warn ("warning message");
+  l->debug ("warning message");
+  l->flush ();
 
   signal (SIGINT, my_handler);
 

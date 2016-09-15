@@ -9,9 +9,10 @@ set(VERSION_PATCH 0)
 # location of additional cmake modules
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build")
 set(BIN_DIR ${PROJECT_SOURCE_DIR}/build)
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
+set(EXT_DIR ${PROJECT_SOURCE_DIR}/external)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BIN_DIR}")
 
 # set c++11 compiler flags
 add_definitions(-std=c++11)
@@ -32,16 +33,21 @@ find_package(Boost 1.60 REQUIRED COMPONENTS
 
 include_directories(${Boost_INCLUDE_DIRS})
 
-add_subdirectory(external/fmt)
-include_directories(external/fmt)
+add_subdirectory(${EXT_DIR}/fmt)
+include_directories(${EXT_DIR}/fmt)
 
-add_subdirectory(external/easyloggingpp)
+#add_subdirectory(${EXT_DIR}/easyloggingpp)
+#include_directories(${EXT_DIR}/easyloggingpp/src)
 
-add_subdirectory(src)
-include_directories(src)
+#add_subdirectory(${EXT_DIR}/spdlog)
+# header only
+include_directories(${EXT_DIR}/spdlog/include)
 
-add_subdirectory(external/googletest)
-add_subdirectory(tests)
+add_subdirectory(${SRC_DIR})
+include_directories(${SRC_DIR})
+
+add_subdirectory(${EXT_DIR}/googletest)
+add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 
 # target to update git submodules
 add_custom_target(
