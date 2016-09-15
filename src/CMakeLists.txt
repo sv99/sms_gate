@@ -8,7 +8,9 @@ set(sms_gate_SOURCE_FILES
         GateController.cpp GateController.hpp
         HttpServer.cpp HttpServer.hpp
         InputWorker.cpp InputWorker.hpp
-        OutputWorker.cpp OutputWorker.hpp command_line.cpp command_line.h)
+        OutputWorker.cpp OutputWorker.hpp
+        command_line.cpp command_line.h
+        logger.cpp logger.h)
 
 add_library(sms_gate_lib ${sms_gate_SOURCE_FILES})
 

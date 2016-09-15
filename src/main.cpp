@@ -3,8 +3,9 @@
 #include <ostream>
 
 #include "config.h"
-#include "GateController.hpp"
 #include "command_line.h"
+#include "logger.h"
+#include "GateController.hpp"
 
 GateController controller;
 
@@ -46,7 +47,7 @@ int main (int argc, const char *argv[])
 
   // init logging
 
-  std::cout << "Start SMS Gate" << std::endl;
+  INFO << "Start SMS Gate" << std::endl;
 
   signal (SIGINT, my_handler);
 

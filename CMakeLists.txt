@@ -15,7 +15,7 @@ set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 
 # set c++11 compiler flags
 add_definitions(-std=c++11)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fvisibility=default")
 
 # get git hash
 include(git_revision)
@@ -34,6 +34,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 add_subdirectory(external/fmt)
 include_directories(external/fmt)
+
+add_subdirectory(external/easyloggingpp)
 
 add_subdirectory(src)
 include_directories(src)
