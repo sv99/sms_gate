@@ -46,7 +46,9 @@ UML
 
 3. Small, safe and fast formatting library [fmt](http://fmtlib.net/latest/index.html)
 
-4. Logger [boost::log](http://www.boost.org/doc/libs/1_61_0/libs/log/doc/html/index.html)
+4. Very fast, header only, C++ logging library [spdlog](https://github.com/gabime/spdlog)
 
-[JSON for Modern C++](https://github.com/nlohmann/json)
+5. Embedded Web Server [mongoose](https://github.com/cesanta/mongoose)
+
+6. Планируется [JSON for Modern C++](https://github.com/nlohmann/json)
 

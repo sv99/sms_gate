@@ -3,7 +3,7 @@ project(sms_gate)
 
 # project version
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 1)
+set(VERSION_MINOR 2)
 set(VERSION_PATCH 0)
 
 # location of additional cmake modules
@@ -15,8 +15,8 @@ set(EXT_DIR ${PROJECT_SOURCE_DIR}/external)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BIN_DIR}")
 
 # set c++11 compiler flags
-add_definitions(-std=c++11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fvisibility=default")
+# add_definitions(-std=c++11) - for all files, error for mongoose.c -std=c++11 not allowed with C/ObjC
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # get git hash
 include(git_revision)
@@ -36,12 +36,9 @@ include_directories(${Boost_INCLUDE_DIRS})
 add_subdirectory(${EXT_DIR}/fmt)
 include_directories(${EXT_DIR}/fmt)
 
-#add_subdirectory(${EXT_DIR}/easyloggingpp)
-#include_directories(${EXT_DIR}/easyloggingpp/src)
-
-#add_subdirectory(${EXT_DIR}/spdlog)
 # header only
 include_directories(${EXT_DIR}/spdlog/include)
+include_directories(${EXT_DIR}/mongoose)
 
 add_subdirectory(${SRC_DIR})
 include_directories(${SRC_DIR})

@@ -48,11 +48,8 @@ int main (int argc, const char *argv[])
   // init logging
   init_logger ("smsgate", spdlog::level::debug);
 
-  //  INFO << "Start SMS Gate" << std::endl;
   auto l = spdlog::get("smsgate");
-  l->info ("info message");
-  l->warn ("warning message");
-  l->debug ("warning message");
+  l->info ("Start SMS Gate");
   l->flush ();
 
   signal (SIGINT, my_handler);

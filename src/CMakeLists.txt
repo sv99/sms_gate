@@ -10,7 +10,8 @@ set(sms_gate_SOURCE_FILES
         InputWorker.cpp InputWorker.hpp
         OutputWorker.cpp OutputWorker.hpp
         command_line.cpp command_line.h
-        logger2.h)
+        logger2.h
+        ${EXT_DIR}/mongoose/mongoose.c)
 
 add_library(sms_gate_lib ${sms_gate_SOURCE_FILES})
 
