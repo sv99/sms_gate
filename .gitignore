@@ -2,5 +2,6 @@
 .idea/
 *.swp
 build/
+_builds/
 # generated file
 src/config.h

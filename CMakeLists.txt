@@ -1,13 +1,19 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
+
+include("cmake/HunterGate.cmake")
+
+HunterGate(
+        URL "https://github.com/ruslo/hunter/archive/v0.15.26.tar.gz"
+        SHA1 "7e292fcda36d4cf1214bd4bd8d2360d66fa44395"
+        LOCAL # <----- Use local config.cmake
+)
+
 project(sms_gate)
 
 # project version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
 set(VERSION_PATCH 0)
-
-# location of additional cmake modules
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set(BIN_DIR ${PROJECT_SOURCE_DIR}/build)
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
@@ -16,10 +22,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BIN_DIR}")
 
 # set c++11 compiler flags
 # add_definitions(-std=c++11) - for all files, error for mongoose.c -std=c++11 not allowed with C/ObjC
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set (CMAKE_CXX_STANDARD 11)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+# location of additional cmake modules
+#set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 # get git hash
-include(git_revision)
+include("cmake/git_revision.cmake")
 
 # configure header file
 configure_file(
@@ -27,23 +36,28 @@ configure_file(
         ${SRC_DIR}/config.h
 )
 
-set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost 1.60 REQUIRED COMPONENTS
-        log program_options)
+hunter_add_package(Boost COMPONENTS program_options)
+#set(Boost_USE_STATIC_LIBS ON)
+find_package(Boost 1.60 CONFIG REQUIRED COMPONENTS program_options)
+hunter_add_package(fmt)
+find_package(fmt CONFIG REQUIRED)
 
-include_directories(${Boost_INCLUDE_DIRS})
+hunter_add_package(spdlog)
+find_package(spdlog CONFIG REQUIRED)
 
-add_subdirectory(${EXT_DIR}/fmt)
-include_directories(${EXT_DIR}/fmt)
+#include_directories(${Boost_INCLUDE_DIRS})
+
+#add_subdirectory(${EXT_DIR}/fmt)
+#include_directories(${EXT_DIR}/fmt)
 
 # header only
-include_directories(${EXT_DIR}/spdlog/include)
+#include_directories(${EXT_DIR}/spdlog/include)
 include_directories(${EXT_DIR}/mongoose)
 
 add_subdirectory(${SRC_DIR})
 include_directories(${SRC_DIR})
 
-add_subdirectory(${EXT_DIR}/googletest)
+#add_subdirectory(${EXT_DIR}/googletest)
 add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 
 # target to update git submodules
