@@ -1,0 +1,4 @@
+language: cpp
+compiler: gcc
+install: cmake -H. -B_builds
+script: cmake --build _builds
