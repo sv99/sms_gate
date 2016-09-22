@@ -5,3 +5,6 @@ build/
 _builds/
 # generated file
 src/config.h
+# sonarqube worked dirs
+.sonar/
+bw-outputs/

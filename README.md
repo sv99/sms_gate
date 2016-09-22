@@ -52,3 +52,50 @@ UML
 
 6. Планируется [JSON for Modern C++](https://github.com/nlohmann/json)
 
+Пакетный менеджер hunter
+------------------------
+
+[hunter](https://github.com/ruslo/hunter)
+
+```bash
+cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug
+cmake --build _builds
+```
+
+sonarqube
+---------
+
+Одно из заданий проверка при помощи статического анализатора кода
+
+Установил sonarqube, но для CPP плагин платный, бесплатно проверяют открытые 
+проекты расположенные.
+
+Нужно получить авторизоваться на sonarqube.com через github и получить token.
+После этого можно проверятб проект, результаты появятся в dashboard.
+
+```bash
+brew install sonar-runner
+```
+
+Кроме sonar-runner нужен build-wrapper от sonarqube.
+Загрузить https://sonarqube.com/static/cpp/build-wrapper-macosx-x86.zip,
+в настоящий момент возможна только ручная установка.
+Теперь можно проверить проект.
+
+Глобальные настройки находятся в файле /usr/local/Cellar/sonar-runner/2.8/libexec/conf/sonar-runner.properties
+специфичные для проекта настройки в sonar-project.properties
+```
+# sonar-project.properties
+# SonarQube server for open source projects
+sonar.host.url=https://sonarqube.com
+
+# token for github from sonarqube.com dashboard
+sonar.login=3155f83fdb2ead3aa6706d3ff532b599987c4576
+```
+
+```bash
+build-wrapper-macosx-x86 --out-dir bw-outputs cmake --build _builds
+sonar-runner
+```
+
+https://sonarqube.com/dashboard/index/org.sonarqube:sms-gate-sq-scanner
