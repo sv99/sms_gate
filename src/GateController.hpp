@@ -5,9 +5,9 @@
 #ifndef SMS_GATE_GATECONTROLLER_H
 #define SMS_GATE_GATECONTROLLER_H
 
-#import "HttpServer.hpp"
-#import "InputWorker.hpp"
-#import "OutputWorker.hpp"
+#include "HttpServer.hpp"
+#include "InputWorker.hpp"
+#include "OutputWorker.hpp"
 
 class GateController {
  public:

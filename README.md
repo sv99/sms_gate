@@ -1,6 +1,8 @@
 SMS Gate
 ========
 
+[![travic-ci](https://travis-ci.org/sv99/sms_gate.svg?branch=master)](https://travis-ci.org/sv99/sms_gate/builds)
+  
 Проект создан при прохождении курса от Mail.Ru Group [Углубленное программирование на C/C++](https://stepik.org/course/%D0%A3%D0%B3%D0%BB%D1%83%D0%B1%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0-CC++-153) на [Stepic.org](https://stepik.org).
 
 Особенности и задачи:
@@ -40,12 +42,14 @@ baudrate = 115200
 # for switching in the modem only mode
 #init = at+zcdrun=8
 init = at+cpms="me","me",""
-# without this cirling checking memory with errors
+# without this circling checking memory with errors
 check_memory_method=2
 ```
 
-Debian пакет smstool для arm не содержит скрипты sendsms. Они есть только в версии amd64.
-Они находятся в 
+Целевая платформа arm. Debian пакет smstool для arm не содержит скрипты sendsms.
+Они есть только в версии amd64, были найдены при поиске скрипта sendsms по содержимому всех пакетов.
+Эти скрипты не устанавливаются в систему, нужно копировать в ручную.
+Пришлось распаковывать их отдельно. 
 
 Админка
 -------
