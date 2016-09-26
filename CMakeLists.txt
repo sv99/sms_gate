@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.0)
 include("cmake/HunterGate.cmake")
 
 HunterGate(
-        URL "https://github.com/ruslo/hunter/archive/v0.15.26.tar.gz"
-        SHA1 "7e292fcda36d4cf1214bd4bd8d2360d66fa44395"
-        LOCAL # <----- Use local config.cmake
+        URL "https://github.com/ruslo/hunter/archive/v0.15.33.tar.gz"
+        SHA1 "7849ccc2607964afd5fc8b48130473a133665670"
+#        LOCAL # <----- Use local config.cmake
 )
 
 project(sms_gate)

@@ -21,6 +21,32 @@ Send SMS через USBmodem
 [Отправка SMS с 3G/GSM модема](https://habrahabr.ru/post/133085/)
 [Управляем сервером посредством СМС](https://habrahabr.ru/post/114912/)
 
+Два варианта получения информации о входящей СМС - проверка каталога и получение события из демона,
+можно например организовать пользовательский сигнал.
+
+На debian:
+```bash
+apt-get install smstools usb-modeswitch minicom
+```
+
+Актуальные параметры настройки для модема ZTE MF180
+```
+#/etc/smsd.conf
+
+[MF180]
+device = /dev/ttyUSB1
+incoming = yes
+baudrate = 115200
+# for switching in the modem only mode
+#init = at+zcdrun=8
+init = at+cpms="me","me",""
+# without this cirling checking memory with errors
+check_memory_method=2
+```
+
+Debian пакет smstool для arm не содержит скрипты sendsms. Они есть только в версии amd64.
+Они находятся в 
+
 Админка
 -------
 
