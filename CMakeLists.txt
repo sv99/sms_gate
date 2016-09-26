@@ -37,21 +37,16 @@ configure_file(
 )
 
 hunter_add_package(Boost COMPONENTS program_options)
-#set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.60 CONFIG REQUIRED COMPONENTS program_options)
+include_directories(${Boost_INCLUDE_DIRS})
+
 hunter_add_package(fmt)
 find_package(fmt CONFIG REQUIRED)
 
 hunter_add_package(spdlog)
 find_package(spdlog CONFIG REQUIRED)
 
-#include_directories(${Boost_INCLUDE_DIRS})
-
-#add_subdirectory(${EXT_DIR}/fmt)
-#include_directories(${EXT_DIR}/fmt)
-
 # header only
-#include_directories(${EXT_DIR}/spdlog/include)
 include_directories(${EXT_DIR}/mongoose)
 
 add_subdirectory(${SRC_DIR})
