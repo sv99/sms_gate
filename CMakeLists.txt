@@ -52,7 +52,6 @@ include_directories(${EXT_DIR}/mongoose)
 add_subdirectory(${SRC_DIR})
 include_directories(${SRC_DIR})
 
-#add_subdirectory(${EXT_DIR}/googletest)
 add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 
 # target to update git submodules

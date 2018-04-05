@@ -5,6 +5,7 @@ build/
 _builds/
 # generated file
 src/config.h
+cmake-build-debug/
 # sonarqube worked dirs
 .sonar/
 bw-outputs/
